@@ -1,24 +1,25 @@
 {
   "name": "st-syntax",
   "displayName": "st-syntax",
-  "version": "0.0.1",
+  "description": "syntax highlighting for SaltTriangle language",
+  "version": "0.1.0",
+  "license": "MIT",
   "publisher": "urgangur",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/urgangur/st-syntax"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
-  "activationEvents": [
-    "onLanguage:salttriangle"
-  ],
+  "activationEvents": [],
   "contributes": {
     "languages": [
       {
         "id": "salttriangle",
-        "aliases": [
-          "SaltTriangle"
-        ],
-        "extensions": [
-          ".st"
-        ]
+        "aliases": [ "SaltTriangle", "st" ],
+        "extensions": [ ".st" ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
@@ -27,14 +28,7 @@
         "scopeName": "source.st",
         "path": "./syntaxes/salttriangle.tmLanguage.json"
       }
-    ],
-    "themes": [
-      {
-        "label": "SaltTriangle Theme",
-        "uiTheme": "vs-dark",
-        "path": "./themes/st-color-theme.json" 
-      }
     ]
   },
-  "main": "./extension.js"
+  "main": "extension.js"
 }

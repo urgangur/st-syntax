@@ -10,32 +10,33 @@
   "repository": {
     "comments": {
       "patterns": [
-        { "match": "//.*", "name": "comment.line.st" },
+        { "match": "//.*", "name": "comment.line.double-slash.st" },
         { "begin": "/\\*", "end": "\\*/", "name": "comment.block.st" }
       ]
     },
     "header": {
       "match": "^(::)\\s*([\\w.>+-]+)(?:\\s+(\\[)\\s*([\\w.+-]+)\\s*(\\]))(?:\\s*(\\[)(\\s*[^,\\]]+(?:\\s*,\\s*[^,\\]]+)*)\\s*(\\]))?",
       "captures": {
-        "1": { "name": "header.start.st" },
-        "2": { "name": "passage.id.st" },
-        "3": { "name": "punctuation.definition.bracket.st" },
-        "4": { "name": "variable.parameter.layout.st" },
-        "5": { "name": "punctuation.definition.bracket.st" },
-        "6": { "name": "punctuation.definition.bracket.st" },
-        "7": { "name": "constant.other.tag.st" },
-        "8": { "name": "punctuation.definition.bracket.st" }
+        "1": { "name": "keyword.control.header.st" },
+        "2": { "name": "entity.name.function.st" },
+        "3": { "name": "punctuation.definition.tag.begin.st" },
+        "4": { "name": "variable.parameter.st" },
+        "5": { "name": "punctuation.definition.tag.end.st" },
+        "6": { "name": "punctuation.definition.tag.begin.st" },
+        "7": { "name": "entity.name.tag.st" },
+        "8": { "name": "punctuation.definition.tag.end.st" }
       }
     },
     "js-block": {
       "begin": "(@{)\\s*(onEnter|onExit)\\s*(})",
       "beginCaptures": {
-        "1": { "name": "punctuation.definition.block.st" },
-        "2": { "name": "entity.name.type.st" },
-        "3": { "name": "punctuation.definition.block.st" }
+        "1": { "name": "punctuation.definition.tag.begin.st" },
+        "2": { "name": "storage.type.function.st" },
+        "3": { "name": "punctuation.definition.tag.begin.st" }
       },
       "end": "(@{\\s*end\\s*})",
-      "endCaptures": { "1": { "name": "punctuation.definition.block.st" } },
+      "endCaptures": { "1": { "name": "punctuation.definition.tag.end.st" } },
+      "contentName": "meta.embedded.block.javascript",
       "patterns": [
         { "include": "#variables" },
         { "include": "source.js" }
@@ -44,12 +45,12 @@
     "slot-block": {
       "begin": "(@{)\\s*([\\w.+-]+)\\s*(})",
       "beginCaptures": {
-        "1": { "name": "punctuation.definition.block.st" },
-        "2": { "name": "variable.other.slot.st" },
-        "3": { "name": "punctuation.definition.block.st" }
+        "1": { "name": "punctuation.definition.tag.begin.st" },
+        "2": { "name": "variable.other.object.st" },
+        "3": { "name": "punctuation.definition.tag.begin.st" }
       },
       "end": "(@{\\s*end\\s*})",
-      "endCaptures": { "1": { "name": "punctuation.definition.block.st" } },
+      "endCaptures": { "1": { "name": "punctuation.definition.tag.end.st" } },
       "patterns": [
         { "include": "#interpolation" },
         { "include": "text.html.basic" },
@@ -60,19 +61,19 @@
     },
     "interpolation": {
       "begin": "(\\$\\{)",
-      "beginCaptures": { "1": { "name": "punctuation.section.embedded.st" } },
+      "beginCaptures": { "1": { "name": "punctuation.definition.tag.begin.st" } },
       "end": "(\\})",
-      "endCaptures": { "1": { "name": "punctuation.section.embedded.st" } },
+      "endCaptures": { "1": { "name": "punctuation.definition.tag.end.st" } },
       "patterns": [
-        { "match": "/?(if|elif|else|for|in)\\b", "name": "keyword.control.st" },
+        { "match": "/?(if|elif|else|for|in|=)\\b", "name": "keyword.control.st" },
         { "include": "#core-syntax" }
       ]
     },
     "link": {
       "begin": "(#\\{)",
-      "beginCaptures": { "1": { "name": "punctuation.definition.link.st" } },
+      "beginCaptures": { "1": { "name": "constant.character.escape.st" } },
       "end": "(\\})",
-      "endCaptures": { "1": { "name": "punctuation.definition.link.st" } },
+      "endCaptures": { "1": { "name": "constant.character.escape.st" } },
       "patterns": [
         { "match": "\\|", "name": "punctuation.separator.pipe.st" },
         { "include": "#core-syntax" }
@@ -88,8 +89,8 @@
     },
     "variables": {
       "patterns": [
-        { "match": "\\$[\\w\\.]+(\\[['\"]?\\w+['\"]?\\])?", "name": "variable.other.global.st" },
-        { "match": "_[\\w\\.]+", "name": "variable.other.temp.st" }
+        { "match": "\\$[\\w\\.]+(\\[['\"]?\\w+['\"]?\\])?", "name": "variable.st" },
+        { "match": "_[\\w\\.]+", "name": "variable.language.st" }
       ]
     }
   }
