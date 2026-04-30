@@ -27,6 +27,9 @@ jobs:
       - name: Package extension
         run: npm install -g @vscode/vsce
 
+      - name: Build extension
+        run: vsce package
+
       - name: Get VSIX file
         id: vsix
         run: echo "file=$(ls *.vsix)" >> $GITHUB_OUTPUT
