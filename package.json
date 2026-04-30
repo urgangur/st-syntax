@@ -1,0 +1,40 @@
+{
+  "name": "st-syntax",
+  "displayName": "st-syntax",
+  "version": "0.0.1",
+  "publisher": "urgangur",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "activationEvents": [
+    "onLanguage:salttriangle"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "salttriangle",
+        "aliases": [
+          "SaltTriangle"
+        ],
+        "extensions": [
+          ".st"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "salttriangle",
+        "scopeName": "source.st",
+        "path": "./syntaxes/salttriangle.tmLanguage.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "SaltTriangle Theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/st-color-theme.json" 
+      }
+    ]
+  },
+  "main": "./extension.js"
+}

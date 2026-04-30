@@ -1,0 +1,140 @@
+{
+  "name": "SaltTriangle Theme",
+  "type": "dark",
+  "tokenColors": [
+    // 1. Passage Header
+    {
+      "name": "ST Header Marker (::)",
+      "scope": "header.start.st",
+      "settings": { "foreground": "#cff373"}
+    },
+    {
+      "name": "ST Passage ID",
+      "scope": "passage.id.st",
+      "settings": { "foreground": "#ffffff"}
+    },
+    {
+      "name": "ST Layout Parameters",
+      "scope": "variable.parameter.layout.st",
+      "settings": { "foreground": "#eb5f27" }
+    },
+    {
+      "name": "ST Tags",
+      "scope": "constant.other.tag.st",
+      "settings": { "foreground": "#ddff00", "fontStyle": "italic" }
+    },
+    {
+      "name": "header bracket",
+      "scope": "punctuation.definition.bracket.st",
+      "settings": { "foreground": "#808080"}
+    },
+
+    // 2. Blocks: 區分腳本 block 與內容 slot
+    {
+      "name": "ST Block Punctuation (@{...})",
+      "scope": "punctuation.definition.block.st",
+      "settings": { "foreground": "#808080" }
+    },
+    {
+      "name": "ST Lifecycle Events (onEnter/onExit)",
+      "scope": "entity.name.type.st",
+      "settings": { "foreground": "#C586C0", "fontStyle": "bold" }
+    },
+    {
+      "name": "ST Slot Name",
+      "scope": "variable.other.slot.st",
+      "settings": { "foreground": "#9CDCFE" }
+    },
+
+    // 3. Interpolation & Controls: 嵌入式語法
+    {
+      "name": "ST Interpolation Marker (${})",
+      "scope": "punctuation.section.embedded.st",
+      "settings": { "foreground": "#569CD6" }
+    },
+    {
+      "name": "ST Keywords (if/for/in)",
+      "scope": "keyword.control.st",
+      "settings": { "foreground": "#C586C0" }
+    },
+
+    // 4. Links: 交互行為
+    {
+      "name": "ST Link Marker (#{})",
+      "scope": "punctuation.definition.link.st",
+      "settings": { "foreground": "#DCDCAA" }
+    },
+    {
+      "name": "ST Link JS Block ({})",
+      "scope": "punctuation.section.js.begin.st",
+      "settings": { "foreground": "#D4D4D4" }
+    },
+    {
+      "name": "ST Link Separator (|)",
+      "scope": "punctuation.separator.pipe.st",
+      "settings": { "foreground": "#808080", "fontStyle": "bold" }
+    },
+
+    // 5. Variables & Data: 資料類型
+    {
+      "name": "ST Global Variable ($var)",
+      "scope": "variable.other.global.st",
+      "settings": { "foreground": "#D7BA7D" }
+    },
+    {
+      "name": "ST Temp Variable (_var)",
+      "scope": "variable.other.temp.st",
+      "settings": { "foreground": "#9CDCFE" }
+    },
+    {
+      "name": "ST Operators",
+      "scope": "keyword.operator.st",
+      "settings": { "foreground": "#D4D4D4" }
+    },
+    {
+      "name": "ST String",
+      "scope": "string.quoted.st",
+      "settings": { "foreground": "#CE9178" }
+    },
+    {
+      "name": "ST Number",
+      "scope": "constant.numeric.st",
+      "settings": { "foreground": "#B5CEA8" }
+    },
+    {
+      "name": "ST Comment",
+      "scope": ["comment.line.st", "comment.block.st"],
+      "settings": { "foreground": "#6A9955" }
+    },
+    // --- JS (從 Dark+ 搬過來的核心規則) ---
+    { "scope": "keyword.control, keyword.operator.new, keyword.operator.expression, keyword.operator.cast, keyword.operator.sizeof, keyword.operator.logical.python", "settings": { "foreground": "#C586C0" } },
+    { "scope": "entity.name.function, support.function, support.constant.handlebars, source.powershell variable.other.member", "settings": { "foreground": "#DCDCAA" } },
+    { "scope": "variable, meta.definition.variable.name, support.variable, entity.name.variable", "settings": { "foreground": "#9CDCFE" } },
+    { "scope": "string, punctuation.definition.string", "settings": { "foreground": "#CE9178" } },
+    { "scope": "constant.numeric, constant.character, constant.escape", "settings": { "foreground": "#B5CEA8" } },
+    { "scope": "comment, punctuation.definition.comment", "settings": { "foreground": "#6A9955" } },
+    { "scope": "keyword.other", "settings": { "foreground": "#D4D4D4" } },
+    { "scope": "storage.type, storage.modifier", "settings": { "foreground": "#569CD6" } },
+    // --- HTML (從 Dark+ 搬過來的核心規則) ---
+    {
+    "name": "HTML Tag brackets",
+    "scope": "punctuation.definition.tag",
+    "settings": { "foreground": "#808080" }
+    },
+    {
+      "name": "HTML Tag names",
+      "scope": "entity.name.tag",
+      "settings": { "foreground": "#569CD6" }
+    },
+    {
+      "name": "HTML Attribute names",
+      "scope": "entity.other.attribute-name",
+      "settings": { "foreground": "#9CDCFE" }
+    },
+    {
+      "name": "HTML Attribute values",
+      "scope": "string.quoted.double.html, string.quoted.single.html",
+      "settings": { "foreground": "#CE9178" }
+    }
+  ]
+}

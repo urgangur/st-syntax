@@ -1,0 +1,96 @@
+{
+  "name": "SaltTriangle",
+  "scopeName": "source.st",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#header" },
+    { "include": "#js-block" },
+    { "include": "#slot-block" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        { "match": "//.*", "name": "comment.line.st" },
+        { "begin": "/\\*", "end": "\\*/", "name": "comment.block.st" }
+      ]
+    },
+    "header": {
+      "match": "^(::)\\s*([\\w.>+-]+)(?:\\s+(\\[)\\s*([\\w.+-]+)\\s*(\\]))(?:\\s*(\\[)(\\s*[^,\\]]+(?:\\s*,\\s*[^,\\]]+)*)\\s*(\\]))?",
+      "captures": {
+        "1": { "name": "header.start.st" },
+        "2": { "name": "passage.id.st" },
+        "3": { "name": "punctuation.definition.bracket.st" },
+        "4": { "name": "variable.parameter.layout.st" },
+        "5": { "name": "punctuation.definition.bracket.st" },
+        "6": { "name": "punctuation.definition.bracket.st" },
+        "7": { "name": "constant.other.tag.st" },
+        "8": { "name": "punctuation.definition.bracket.st" }
+      }
+    },
+    "js-block": {
+      "begin": "(@{)\\s*(onEnter|onExit)\\s*(})",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.block.st" },
+        "2": { "name": "entity.name.type.st" },
+        "3": { "name": "punctuation.definition.block.st" }
+      },
+      "end": "(@{\\s*end\\s*})",
+      "endCaptures": { "1": { "name": "punctuation.definition.block.st" } },
+      "patterns": [
+        { "include": "#variables" },
+        { "include": "source.js" }
+      ]
+    },
+    "slot-block": {
+      "begin": "(@{)\\s*([\\w.+-]+)\\s*(})",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.block.st" },
+        "2": { "name": "variable.other.slot.st" },
+        "3": { "name": "punctuation.definition.block.st" }
+      },
+      "end": "(@{\\s*end\\s*})",
+      "endCaptures": { "1": { "name": "punctuation.definition.block.st" } },
+      "patterns": [
+        { "include": "#interpolation" },
+        { "include": "text.html.basic" },
+        { "include": "#link" },
+        { "include": "#variables" },
+        { "include": "#comments"}
+      ]
+    },
+    "interpolation": {
+      "begin": "(\\$\\{)",
+      "beginCaptures": { "1": { "name": "punctuation.section.embedded.st" } },
+      "end": "(\\})",
+      "endCaptures": { "1": { "name": "punctuation.section.embedded.st" } },
+      "patterns": [
+        { "match": "/?(if|elif|else|for|in)\\b", "name": "keyword.control.st" },
+        { "include": "#core-syntax" }
+      ]
+    },
+    "link": {
+      "begin": "(#\\{)",
+      "beginCaptures": { "1": { "name": "punctuation.definition.link.st" } },
+      "end": "(\\})",
+      "endCaptures": { "1": { "name": "punctuation.definition.link.st" } },
+      "patterns": [
+        { "match": "\\|", "name": "punctuation.separator.pipe.st" },
+        { "include": "#core-syntax" }
+      ]
+    },
+    "core-syntax": {
+      "patterns": [
+        { "include": "#variables" },
+        { "match": "==|!=|>=|<=|[\\+\\-\\*/=<>]", "name": "keyword.operator.st" },
+        { "match": "\\b\\d+(\\.\\d+)?\\b", "name": "constant.numeric.st" },
+        { "match": "'[^']*'|\"[^\"]*\"", "name": "string.quoted.st" }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        { "match": "\\$[\\w\\.]+(\\[['\"]?\\w+['\"]?\\])?", "name": "variable.other.global.st" },
+        { "match": "_[\\w\\.]+", "name": "variable.other.temp.st" }
+      ]
+    }
+  }
+}
