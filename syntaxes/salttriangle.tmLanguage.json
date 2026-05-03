@@ -28,7 +28,7 @@
       }
     },
     "js-block": {
-      "begin": "(@{)\\s*(onEnter|onExit)\\s*(})",
+      "begin": "(@{)\\s*(onEnter|onExit|afterRendered)\\s*(})",
       "beginCaptures": {
         "1": { "name": "punctuation.definition.tag.begin.st" },
         "2": { "name": "storage.type.function.st" },
